@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+
+<component name="ts.nuxeo.ecm.platform.smart.query.layouts">
+    <require>org.nuxeo.ecm.platform.smart.query.layouts</require>
+
+  <extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+    point="widgets">
+
+    <widget name="nxql_smart_query_condition_ts_created" type="incremental_smart_query_condition">
+      <labels>
+        <label mode="any">tst:created</label>
+      </labels>
+      <translated>true</translated>
+      <properties widgetMode="edit">
+        <property name="searchField">tst:created</property>
+        <propertyList name="availableOperators">
+          <value>BETWEEN</value>
+          <value>NOT BETWEEN</value>
+          <value>&lt;</value>
+          <value>&gt;</value>
+        </propertyList>
+      </properties>
+      <subWidgets>
+        <widget name="created" type="datetimeRange">
+          <fields>
+            <field>dateValue</field>
+            <field>otherDateValue</field>
+          </fields>
+          <properties widgetMode="edit">
+            <property name="required">true</property>
+            <property name="format">#{nxu:basicDateFormatter()}</property>
+          </properties>
+          <widgetModes>
+            <mode value="any">
+              <![CDATA[
+              #{(empty value.conditionalOperator or value.conditionalOperator=='BETWEEN' or value.conditionalOperator=='NOT BETWEEN')?'edit':'hidden'}
+              ]]>
+            </mode>
+          </widgetModes>
+        </widget>
+        <widget name="created_before" type="datetime">
+          <fields>
+            <field>dateValue</field>
+          </fields>
+          <properties widgetMode="edit">
+            <property name="required">true</property>
+            <property name="format">#{nxu:basicDateFormatter()}</property>
+          </properties>
+          <widgetModes>
+            <mode value="any">
+              <![CDATA[
+              #{(empty value.conditionalOperator or value.conditionalOperator=='BETWEEN' or value.conditionalOperator=='NOT BETWEEN')?'hidden':'edit'}
+              ]]>
+            </mode>
+          </widgetModes>
+        </widget>
+      </subWidgets>
+    </widget>
+
+  </extension>
+
+  <extension target="org.nuxeo.ecm.platform.forms.layout.WebLayoutManager"
+    point="layouts">
+
+    <!--
+    <layout name="nxql_incremental_smart_query">
+      <templates>
+        <template mode="any">
+          /layouts/layout_default_template.xhtml
+        </template>
+      </templates>
+      <rows>
+        <row>
+          <widget>container</widget>
+        </row>
+      </rows>
+      <widget name="container" type="container">
+        <labels>
+          <label mode="any"></label>
+        </labels>
+        <translated>true</translated>
+        <properties mode="any">
+          <property name="tip">label.smart.query.build.help</property>
+          <property name="hideSubLabels">true</property>
+        </properties>
+        <controls mode="any">
+          <control name="handleLabels">true</control>
+        </controls>
+        <subWidgets>
+          <widget name="nxql_incremental_smart_query_widget" type="nxql_incremental_smart_query_widget">
+            <translated>true</translated>
+            <fields>
+              <field>sf:queryPart</field>
+            </fields>
+            <properties mode="any">
+              <property name="selectionLayout">
+                incremental_smart_query_selection
+              </property>
+              <property name="updateQueryPart">true</property>
+              <property name="displayAddWaiter">false</property>
+            </properties>
+          </widget>
+        </subWidgets>
+      </widget>
+    </layout>
+    -->
+    <layout name="incremental_smart_query_selection">
+      <templates>
+        <template mode="any">
+          /layouts/incremental_smart_query_selection_layout_template.xhtml
+        </template>
+      </templates>
+      <properties mode="any">
+        <property name="hideNotOperator">true</property>
+      </properties>
+      <rows>
+        <row name="nxql_smart_query_condition_fulltext">
+          <widget>nxql_smart_query_condition_fulltext</widget>
+        </row>
+        <row name="nxql_smart_query_condition_title">
+          <widget>nxql_smart_query_condition_title</widget>
+        </row>
+        <row name="nxql_smart_query_condition_ts_created">
+          <widget>nxql_smart_query_condition_ts_created</widget>
+        </row>
+        <row name="nxql_smart_query_condition_created">
+          <widget>nxql_smart_query_condition_created</widget>
+        </row>
+        <row name="nxql_smart_query_condition_contributors">
+          <widget>nxql_smart_query_condition_contributors</widget>
+        </row>
+        <row name="nxql_smart_query_condition_modified">
+          <widget>nxql_smart_query_condition_modified</widget>
+        </row>
+        <row name="nxql_smart_query_condition_expired">
+          <widget>nxql_smart_query_condition_expired</widget>
+        </row>
+        <row name="nxql_smart_query_condition_nature">
+          <widget>nxql_smart_query_condition_nature</widget>
+        </row>
+        <row name="nxql_smart_query_condition_subjects">
+          <widget>nxql_smart_query_condition_subjects</widget>
+        </row>
+        <row name="nxql_smart_query_condition_coverage">
+          <widget>nxql_smart_query_condition_coverage</widget>
+        </row>
+        <row name="nxql_smart_query_condition_description">
+          <widget>nxql_smart_query_condition_description</widget>
+        </row>
+        <row name="nxql_smart_query_condition_rights">
+          <widget>nxql_smart_query_condition_rights</widget>
+        </row>
+        <row name="nxql_smart_query_condition_source">
+          <widget>nxql_smart_query_condition_source</widget>
+        </row>
+        <row name="nxql_smart_query_condition_format">
+          <widget>nxql_smart_query_condition_format</widget>
+        </row>
+        <row name="nxql_smart_query_condition_language">
+          <widget>nxql_smart_query_condition_language</widget>
+        </row>
+        <row name="nxql_smart_query_condition_path">
+          <widget>nxql_smart_query_condition_path</widget>
+        </row>
+      </rows>
+    </layout>
+
+  </extension>
+
+</component>

@@ -1,0 +1,9 @@
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Manifest-Version: 1.0
+Bundle-Vendor: org.nuxeo.sample
+Bundle-Version: 1.0.0
+Bundle-Name: ts-core
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.nuxeo.sample.ts-core;singleton=true
+Nuxeo-Component: OSGI-INF/testquery-core-types-contrib.xml, OSGI-INF/smart-query-layouts-contrib.xml
